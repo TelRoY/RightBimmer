@@ -3,14 +3,14 @@
     <h2 class='section-title'>Популярные модели</h2>
     <div class='models-grid'>
       {{#each models}}
-        <div class='model-item'>
+        <div class='model-item' data-car-id='{{id}}'>
           <div class='model-image'>
             <img src='{{image}}' alt='{{name}}' />
             <div class='model-badge'>{{badge}}</div>
           </div>
           <div class='model-info'>
             <h3>{{name}}</h3>
-            <p class='model-year'>{{year}}</p>
+            <p class='model-year'>{{year}} год</p>
             <p class='model-price'>{{price}}</p>
             <a href='#' class='btn btn-small btn-primary'>Подробнее</a>
           </div>

@@ -1,50 +1,21 @@
 import Handlebars from 'handlebars';
 import modelsTemplate from './Models.hbs?raw';
 import './Models.css';
+import { getPopularModels, formatPrice, getMainImage } from '@data/index';
 
-interface Model {
-  id: string;
-  name: string;
-  year: string;
-  price: string;
-  image: string;
-  badge: string;
+function prepareModelsData() {
+  const popularCars = getPopularModels();
+  
+  return popularCars.map((car) => ({
+    id: car.id,
+    name: `${car.brand.toUpperCase()} ${car.model}`,
+    year: `${car.year}`,
+    price: formatPrice(car.price),
+    image: getMainImage(car),
+    badge: car.badge || '',
+    description: car.description,
+  }));
 }
-
-const modelsData: Model[] = [
-  {
-    id: 'bmw-1-series',
-    name: 'BMW 1-Series',
-    year: '2022-2024',
-    price: 'от 1 250 000 ₽',
-    image: '/img/BMW 1-Series-new.jpg',
-    badge: 'Хит',
-  },
-  {
-    id: 'bmw-2-series',
-    name: 'BMW 2-Series',
-    year: '2022-2024',
-    price: 'от 1 100 000 ₽',
-    image: '/img/BMW-2-Series-new.jpg',
-    badge: 'Новинка',
-  },
-  {
-    id: 'mazda-axela',
-    name: 'Mazda Axela',
-    year: '2020-2023',
-    price: 'от 950 000 ₽',
-    image: '/img/Mazda-Axela.jpg',
-    badge: 'Популярное',
-  },
-  {
-    id: 'toyota-raize',
-    name: 'Toyota Raize',
-    year: '2022-2024',
-    price: 'от 1 450 000 ₽',
-    image: '/img/Toyota-Raize.jpg',
-    badge: 'Топ',
-  },
-];
 
 export class Models {
   private container: HTMLElement;
@@ -54,9 +25,21 @@ export class Models {
   }
 
   render(): void {
-    const template = Handlebars.compile(modelsTemplate);
-    this.container.innerHTML = template({ models: modelsData });
-    this.initHandlers();
+    try {
+      const template = Handlebars.compile(modelsTemplate);
+      const models = prepareModelsData();
+      
+      this.container.innerHTML = template({ models });
+      this.initHandlers();
+    } catch (error) {
+      console.error('Ошибка рендеринга Models:', error);
+      this.container.innerHTML = `
+        <div style="text-align:center; padding:40px; color:#666;">
+          <p>⚠️ Ошибка загрузки данных</p>
+          <p style="font-size:14px;">Пожалуйста, обновите страницу</p>
+        </div>
+      `;
+    }
   }
 
   private initHandlers(): void {
@@ -64,9 +47,14 @@ export class Models {
     buttons.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        const modelName = btn.closest('.model-item')?.querySelector('h3')?.textContent;
+        const modelItem = btn.closest('.model-item');
+        const modelName = modelItem?.querySelector('h3')?.textContent;
+        const carId = modelItem?.getAttribute('data-car-id');
+        
         if (modelName) {
-          console.log(`Выбрана модель: ${modelName}`);
+          console.log(`Выбрана модель: ${modelName} (ID: ${carId})`);
+          // Открыть модальное окно с деталями
+          alert(`🚗 ${modelName}\n\nПодробная информация появится в ближайшее время.`);
         }
       });
     });

@@ -14,11 +14,17 @@
 ## Технологии:
 
 TypeScript
+
 Vite
+
 Handlebars
+
 PostCSS
+
 ESLint
+
 Stylelint
+
 CSS Variables
 
 ## Планы по развитию

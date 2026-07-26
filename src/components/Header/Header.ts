@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars';
-import headerTemplate from './Header.hbs';
+import headerTemplate from './Header.hbs?raw';
 import './Header.css';
 
 export class Header {

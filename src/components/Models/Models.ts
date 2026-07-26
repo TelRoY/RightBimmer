@@ -13,7 +13,6 @@ function prepareModelsData() {
     price: formatPrice(car.price),
     image: getMainImage(car),
     badge: car.badge || '',
-    description: car.description,
   }));
 }
 

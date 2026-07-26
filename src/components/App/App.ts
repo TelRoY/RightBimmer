@@ -37,7 +37,11 @@ export class App {
 
     components.forEach(({ id, Component }) => {
       const instance = new Component(id);
-      instance.render();
+      if (Component === Hero) {
+        (instance as Hero).render().catch(console.error);
+      } else {
+        instance.render();
+      }
     });
   }
 }

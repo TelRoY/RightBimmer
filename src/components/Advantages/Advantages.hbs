@@ -1,0 +1,16 @@
+<section class='advantages section'>
+  <div class='container'>
+    <h2 class='section-title'>Почему выбирают нас</h2>
+    <div class='advantages-grid'>
+      {{#each advantages}}
+        <div class='advantage-item'>
+          <div class='advantage-icon'>
+            {{{icon}}}
+          </div>
+          <h3>{{title}}</h3>
+          <p>{{description}}</p>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

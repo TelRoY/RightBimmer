@@ -1,0 +1,52 @@
+<section class='calculator section' id='calculator'>
+  <div class='container'>
+    <h2 class='section-title'>Калькулятор стоимости</h2>
+    <p class='calculator-subtitle'>Рассчитайте полную стоимость автомобиля с доставкой и растаможкой</p>
+    <form class='calc-form'>
+      <div class='form-row'>
+        <div class='form-group'>
+          <label for='model'>Модель автомобиля</label>
+          <input type='text' id='model' placeholder='Например, BMW X5' />
+        </div>
+        <div class='form-group'>
+          <label for='year'>Год выпуска</label>
+          <select id='year'>
+            <option value=''>Выберите год</option>
+            <option value='2024'>2024</option>
+            <option value='2023'>2023</option>
+            <option value='2022'>2022</option>
+            <option value='2021'>2021</option>
+            <option value='2020'>2020</option>
+          </select>
+        </div>
+      </div>
+      <div class='form-row'>
+        <div class='form-group'>
+          <label for='engine'>Объем двигателя</label>
+          <select id='engine'>
+            <option value=''>Выберите объем</option>
+            <option value='1.0'>до 1.0 л</option>
+            <option value='1.5'>до 1.5 л</option>
+            <option value='2.0'>до 2.0 л</option>
+            <option value='3.0'>до 3.0 л</option>
+            <option value='4.0'>более 3.0 л</option>
+          </select>
+        </div>
+        <div class='form-group'>
+          <label for='city'>Город доставки</label>
+          <select id='city'>
+            <option value=''>Выберите город</option>
+            <option value='vladivostok'>Владивосток</option>
+            <option value='moscow'>Москва</option>
+            <option value='spb'>Санкт-Петербург</option>
+            <option value='voronezh'>Воронеж</option>
+            <option value='novosibirsk'>Новосибирск</option>
+            <option value='ekaterinburg'>Екатеринбург</option>
+          </select>
+        </div>
+      </div>
+      <button type='submit' class='btn btn-primary btn-large'>Рассчитать стоимость</button>
+    </form>
+    <div id='calc-result' class='calc-result'></div>
+  </div>
+</section>

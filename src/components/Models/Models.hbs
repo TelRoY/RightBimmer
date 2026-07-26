@@ -1,0 +1,24 @@
+<section class='models section' id='catalog'>
+  <div class='container'>
+    <h2 class='section-title'>Популярные модели</h2>
+    <div class='models-grid'>
+      {{#each models}}
+        <div class='model-item'>
+          <div class='model-image'>
+            <img src='{{image}}' alt='{{name}}' />
+            <div class='model-badge'>{{badge}}</div>
+          </div>
+          <div class='model-info'>
+            <h3>{{name}}</h3>
+            <p class='model-year'>{{year}}</p>
+            <p class='model-price'>{{price}}</p>
+            <a href='#' class='btn btn-small btn-primary'>Подробнее</a>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+    <div class='text-center'>
+      <a href='#catalog' class='btn btn-primary btn-large'>Смотреть весь каталог</a>
+    </div>
+  </div>
+</section>

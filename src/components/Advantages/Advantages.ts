@@ -44,7 +44,7 @@ export class Advantages {
       {
         icon: this.getDeliveryIcon(),
         title: 'Полный цикл',
-        description: 'Доставка, растаможка и постановка на учет "под ключ"',
+        description: 'Покупка, растаможка, доставка и постановка на учет "под ключ"',
       },
     ];
   }

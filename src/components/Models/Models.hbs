@@ -6,7 +6,9 @@
         <div class='model-item' data-car-id='{{id}}'>
           <div class='model-image'>
             <img src='{{image}}' alt='{{name}}' />
+            {{#if badge}}
             <div class='model-badge'>{{badge}}</div>
+            {{/if}}
           </div>
           <div class='model-info'>
             <h3>{{name}}</h3>
@@ -17,8 +19,13 @@
         </div>
       {{/each}}
     </div>
+
+    {{#if hasMore}}
     <div class='text-center'>
-      <a href='#catalog' class='btn btn-primary btn-large'>Смотреть весь каталог</a>
+      <button class="btn btn-primary btn-large show-all-btn">
+        Смотреть весь каталог
+      </button>
     </div>
+    {{/if}}
   </div>
 </section>

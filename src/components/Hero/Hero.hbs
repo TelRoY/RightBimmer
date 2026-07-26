@@ -1,5 +1,20 @@
 <section class='hero'>
   <div class='container'>
+    <div class="rates-widget">
+      <div class="rates-header">
+        <span class="rates-title">💱 Курсы валют</span>
+      </div>
+      <div class="rates-grid">
+        {{#each rates}}
+        <div class="rate-item">
+          <span class="rate-flag">{{flag}}</span>
+          <span class="rate-currency">{{currency}}</span>
+          <span class="rate-value">{{rate}}</span>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
     <div class='hero-content'>
       <h1>Автомобили из Японии <br />напрямую с аукционов</h1>
       <p>Поможем купить, доставить и растаможить автомобиль <br />из Японии под ключ</p>

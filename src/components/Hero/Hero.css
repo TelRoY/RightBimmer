@@ -16,6 +16,84 @@
   border-radius: 50%;
 }
 
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.rates-widget {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px 20px;
+  min-width: 240px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.rates-widget:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.rates-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rates-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.rates-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rate-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 13px;
+}
+
+.rate-item:last-child {
+  border-bottom: none;
+}
+
+.rate-flag {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.rate-currency {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  flex: 1;
+}
+
+.rate-value {
+  color: #ffffff;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
@@ -42,9 +120,31 @@
   flex-wrap: wrap;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+  .rates-widget {
+    position: relative;
+    top: auto;
+    right: auto;
+    max-width: 300px;
+    margin: 0 auto 30px;
+  }
+
   .hero {
     padding: 60px 0 80px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 0 60px;
   }
 
   .hero h1 {
@@ -62,5 +162,63 @@
   .hero-buttons .btn {
     width: 100%;
     text-align: center;
+  }
+
+  .rates-widget {
+    min-width: unset;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 16px;
+  }
+
+  .rates-header {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .rates-title {
+    font-size: 13px;
+  }
+
+  .rate-item {
+    font-size: 12px;
+  }
+
+  .rate-flag {
+    font-size: 16px;
+  }
+
+  .rate-change {
+    font-size: 11px;
+    min-width: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rates-widget {
+    padding: 10px 12px;
+  }
+
+  .rates-update {
+    font-size: 10px;
+  }
+
+  .rate-item {
+    padding: 3px 0;
+    font-size: 11px;
+  }
+
+  .rate-value {
+    margin-right: 8px;
+  }
+
+  .rate-change {
+    font-size: 10px;
+    min-width: 35px;
+    padding: 1px 6px;
+  }
+
+  .rates-note {
+    font-size: 9px;
   }
 }

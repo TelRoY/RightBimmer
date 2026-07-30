@@ -5,14 +5,14 @@
 .calculator-subtitle {
   text-align: center;
   font-size: 18px;
-  color: #666666;
+  color: #f34a4a;
   margin-bottom: 40px;
 }
 
 .calc-form {
   max-width: 800px;
   margin: 0 auto;
-  background: #ffffff;
+  background: #e6bbbb;
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
@@ -62,7 +62,7 @@
   max-width: 800px;
   margin: 30px auto 0;
   padding: 20px;
-  background: #ffffff;
+  background: #653c3c;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   display: none;
@@ -79,7 +79,7 @@
 }
 
 .total-price {
-  color: #d53005;
+  color: #40d505;
   font-size: 24px;
   font-weight: 800;
 }

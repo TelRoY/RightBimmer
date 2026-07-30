@@ -1,9 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 #app {
-  display: flex;
-  flex-direction: column;
+  background: var(--color-dark);
   min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-body);
 }
 
+/* Анимированный фоновый градиент */
 main {
-  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+main::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(255, 45, 85, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(0, 212, 255, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(123, 47, 252, 0.05) 0%, transparent 50%);
+  z-index: 0;
+  animation: gradientFloat 20s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes gradientFloat {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(5%, -5%) rotate(2deg);
+  }
+  66% {
+    transform: translate(-5%, 5%) rotate(-2deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+main > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
 }

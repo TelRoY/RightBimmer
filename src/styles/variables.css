@@ -1,16 +1,35 @@
 :root {
   /* Цвета */
   --color-primary: #d53005;
-  --color-primary-dark: #b82804;
-  --color-secondary: #1a1a1a;
+  /* --color-primary-dark: #b82804; */
+  --color-primary-dark: #e01a44;
+  /* --color-secondary: #1a1a1a; */
+  --color-secondary: #00d4ff;
   --color-text: #1a1a1a;
   --color-text-light: #666;
   --color-white: #ffffff;
   --color-gray: #f8f8f8;
   --color-border: #e0e0e0;
+  --color-primary: #ff2d55;
+  --color-secondary: #00d4ff;
+  --color-accent: #7b2ffc;
+  --color-accent-glow: 0 0 40px rgba(123, 47, 252, 0.3);
+  --color-dark: #0a0a0f;
+  --color-dark-card: #14141e;
+  --color-dark-hover: #1c1c2e;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-neon-glow: 0 0 30px rgba(255, 45, 85, 0.3);
+
+  /* Текст */
+  --color-text: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.6);
+  --color-text-muted: rgba(255, 255, 255, 0.3);
 
   /* Шрифты */
   --font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Montserrat', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Размеры */
   --container-width: 1200px;
@@ -20,6 +39,10 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 40px rgba(255, 45, 85, 0.15);
+  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.5);
+  --neon-primary: 0 0 30px rgba(255, 45, 85, 0.3);
+  --neon-secondary: 0 0 30px rgba(0, 212, 255, 0.3);
 
   /* Радиусы */
   --radius-sm: 8px;
@@ -33,4 +56,8 @@
   --spacing-lg: 24px;
   --spacing-xl: 40px;
   --spacing-xxl: 80px;
+
+  /* Анимации */
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }

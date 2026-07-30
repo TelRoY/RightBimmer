@@ -1,5 +1,6 @@
 import Handlebars from 'handlebars';
 import calculatorTemplate from './Calculator.hbs?raw';
+import { fetchExchangeRates } from '@utils/currency-api';
 import './Calculator.css';
 
 export class Calculator {
@@ -15,56 +16,121 @@ export class Calculator {
     this.initCalculator();
   }
 
-  private initCalculator(): void {
+  private async initCalculator(): Promise<void> {
     const form = this.container.querySelector('.calc-form');
     const resultEl = this.container.querySelector('.calc-result');
 
+    const rates = await fetchExchangeRates();
+    const euroRate = rates.find(r => r.currency === 'EUR')?.rate || 88.9;
+    const yenRate = rates.find(r => r.currency === 'JPY')?.rate || 0.515;
+    const yenRateUr = yenRate + 0.1;
     if (form) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const model = (this.container.querySelector('#model') as HTMLInputElement)?.value;
-        const year = (this.container.querySelector('#year') as HTMLSelectElement)?.value;
-        const engine = (this.container.querySelector('#engine') as HTMLSelectElement)?.value;
-        const city = (this.container.querySelector('#city') as HTMLSelectElement)?.value;
+        const carPriceYen = parseFloat((this.container.querySelector('#car-price-yen') as HTMLInputElement)?.value) || 0;
+        const releaseYear = parseInt((this.container.querySelector('#release-year') as HTMLSelectElement)?.value, 10) || 0;
+        const releaseMonth = parseInt((this.container.querySelector('#release-month') as HTMLSelectElement)?.value, 10) || 0;
+        const engineVolume = parseInt((this.container.querySelector('#engine') as HTMLSelectElement)?.value, 10) || 0;
+        const importYear = 2026;
+        const importMonth = 8;
 
-        if (!model || !year || !engine || !city) {
+        if (!carPriceYen || !engineVolume || !importYear) {
           alert('Пожалуйста, заполните все поля!');
           return;
         }
 
-        // Простой расчет
-        const enginePrices: Record<string, number> = {
-          '1.0': 800000,
-          '1.5': 1000000,
-          '2.0': 1300000,
-          '3.0': 1800000,
-          '4.0': 2500000,
-        };
+        // Расчёт утильсбора 
+        let releaseTotal = ((releaseYear*12) + releaseMonth);
+        let importTotal = (importYear*12) + importMonth;
+        const prohod = (importTotal - 58 > releaseTotal) ? 2015 : (importTotal - 35 < releaseTotal) ? 2023 : 2020;
+        const utilSbor = (prohod < 2021) ? 5200 : 3400;
 
-        const basePrice = enginePrices[engine] || 1200000;
+        // Расчёт таможенного оформления 
+        const customClearance = carPriceYen < 1980
+          ? carPriceYen < 700
+            ? carPriceYen < 300 ? 775 : 2134
+            : 3100
+          : 8530;
 
-        const deliveryPrices: Record<string, number> = {
-          vladivostok: 50000,
-          moscow: 150000,
-          spb: 140000,
-          voronezh: 120000,
-          novosibirsk: 130000,
-          ekaterinburg: 125000,
-        };
+        // Расчёт таможенной ставки 
+        let customsRate = 0;
+        if (prohod < 2021) {
+          // Расчет непроходных авто до 2021 года выпуска
+          if (prohod < 2019) {
+            if (engineVolume < 1100) customsRate = 3;
+            else if (engineVolume < 1600) customsRate = 3.2;
+            else if (engineVolume < 1900) customsRate = 3.5;
+            else if (engineVolume < 2300) customsRate = 4;
+            else customsRate = 5;
+          } else {
+            if (engineVolume < 1100) customsRate = 1.5;
+            else if (engineVolume < 1600) customsRate = 1.7;
+            else if (engineVolume < 1900) customsRate = 2.5;
+            else if (engineVolume < 2300) customsRate = 2.7;
+            else customsRate = 3;
+          }
+        } else {
+          // Расчёт проходных авто после 2021 года выпуска
+          const condition = (carPriceYen + 140) * (carPriceYen < 1300 ? 0.54 : 0.48) * yenRate * 1000;
+          const alternative = engineVolume * (carPriceYen < 1300 ? 2.5 : 3.5) * euroRate;
 
-        const deliveryPrice = deliveryPrices[city] || 100000;
-        const tax = basePrice * 0.3;
-        const total = basePrice + deliveryPrice + tax;
+          if (condition < alternative) {
+            customsRate = carPriceYen < 1300 ? 2.5 : 3.5;
+          } else {
+            customsRate = carPriceYen < 1300 ? 0.54 : 0.48;
+          }
+        }
+
+        // Расчёт таможенной пошлины
+        let customsDuty = 0;
+        if (prohod < 2021) {
+          customsDuty = (engineVolume * customsRate * euroRate) + utilSbor + (carPriceYen < 1980 ? ((carPriceYen < 700) ? ((carPriceYen < 300) ? 775 : 1500) : 3100) : 8500);
+        } else {
+          const baseCost = (carPriceYen + 140) * (carPriceYen < 1300 ? 0.54 : 0.48) * yenRateUr * 1000;
+          const altCost = engineVolume * (carPriceYen < 1300 ? 2.5 : 3.5) * euroRate;
+
+          customsDuty = baseCost < altCost
+            ? (altCost + customClearance + utilSbor)
+            : (baseCost + customClearance + utilSbor);
+        }
+
+        // Прочие расходы 
+        const otherExpenses = 15000 + 4000 + 300 + 1500; // СВХ + временная регистрация + нотариус + сдэк
+        const brokerFee = 55550; // Услуги брокера 
+        const freight = 140; 
+        const rightbimmerFee = 30000;
+        const delivery = 200000;
+
+        // Итого в Японии 
+        const totalInJapanYen = (carPriceYen + freight) * 1000;
+        const totalInJapanRub = totalInJapanYen * yenRate;
+
+        // Итого во Владивостоке 
+        const totalVladivostok = totalInJapanRub + customsDuty + brokerFee + rightbimmerFee + otherExpenses;
+        // Итого в городе доставки 
+        const totalDelivery = totalVladivostok + delivery;
+        // Форматирование результатов
+        const formatCurrency = (amount: number) => amount.toLocaleString('ru-RU') + '₽';
+        const formatYen = (amount: number) => amount.toLocaleString('ja-JP') + '¥';
+
 
         if (resultEl) {
           resultEl.innerHTML = `
             <div class="calc-result-grid">
-              <div><strong>Стоимость авто:</strong><br>${basePrice.toLocaleString()} ₽</div>
-              <div><strong>Доставка:</strong><br>${deliveryPrice.toLocaleString()} ₽</div>
-              <div><strong>Растаможка:</strong><br>${tax.toLocaleString()} ₽</div>
+              <div><strong>Цена авто в йенах:</strong><br>${formatYen(carPriceYen*1000)}</div>
+              <div><strong>Объём мотора:</strong><br>${engineVolume} см³</div>
+              <div><strong>Год выпуска:</strong><br>${releaseYear}</div>
+              <div><strong>Итого в Японии:</strong><br>${formatCurrency(totalInJapanRub)}</div>
+              <div><strong>Утильсбор:</strong><br>${formatCurrency(utilSbor)}</div>
+              <div><strong>Таможенная пошлина:</strong><br>${formatCurrency(customsDuty)}</div>
+              <div><strong>Брокерские услуги:</strong><br>${formatCurrency(brokerFee)}</div>
+              <div><strong>Прочие расходы:</strong><br>${formatCurrency(otherExpenses)}</div>
               <div class="total-price">
-                <strong>Итого:</strong><br>${total.toLocaleString()} ₽
+                <strong>Итого во Владивостоке:</strong><br>${formatCurrency(totalVladivostok)}
+              </div>
+              <div class="total-price">
+                <strong>Итого в городе доставки:</strong><br>${formatCurrency(totalDelivery)}
               </div>
             </div>
           `;

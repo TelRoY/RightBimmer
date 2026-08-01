@@ -108,6 +108,36 @@
   }
 }
 
+.hero-logo-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-10%, -80%);
+  /* z-index: 0; */
+  opacity: 0.4;
+  pointer-events: none;
+  /* animation: logoRotate 40s linear infinite; */
+}
+
+.hero-logo-bg img {
+  width: 600px;
+  height: 600px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 60px rgba(255, 45, 85, 0.1));
+}
+
+@keyframes logoRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
+
 /* Неоновый ореол */
 .hero-glow {
   position: absolute;
@@ -303,14 +333,14 @@
 }
 
 .rates-title {
-  font-size: 13px;
+  font-size: 26px;
   font-weight: 600;
   color: var(--color-text-secondary);
   letter-spacing: 0.5px;
 }
 
 .rates-update {
-  font-size: 10px;
+  font-size: 13px;
   color: var(--color-text-muted);
 }
 
@@ -358,7 +388,7 @@
 }
 
 .rate-flag {
-  font-size: 18px;
+  font-size: 24px;
   margin-right: 10px;
 }
 
@@ -366,20 +396,20 @@
   color: var(--color-text-secondary);
   font-weight: 500;
   flex: 1;
-  font-size: 12px;
+  font-size: 24px;
   letter-spacing: 0.5px;
 }
 
 .rate-value {
   color: var(--color-text);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 24px;
   font-variant-numeric: tabular-nums;
 }
 
 .rates-note {
   margin-top: 10px;
-  font-size: 9px;
+  font-size: 13px;
   color: var(--color-text-muted);
   text-align: center;
   letter-spacing: 0.3px;
@@ -462,6 +492,27 @@
     min-width: unset;
     width: 100%;
     padding: 16px;
+    font-size: 14px;
+  }
+
+  .rates-title {
+    font-size: 13px;
+  }
+
+  .rate-flag {
+    font-size: 13px;
+  }
+  
+  .rate-currency {
+    font-size: 13px;
+  }
+  
+  .rate-value {
+    font-size: 13px;
+  }
+  
+  .rates-note {
+    font-size: 8px;
   }
 
   .hero-glow {

@@ -23,7 +23,7 @@ export const carsData: Car[] = [
     price: 1120000,
     images: [
       {
-        url: '/img/cars/bmw/BMW-1-Series-new.jpg',
+        url: '/RightBimmer/img/cars/bmw/BMW-1-Series-new.jpg',
         alt: 'BMW 1-Series 2020',
         isMain: true,
       },
@@ -38,7 +38,7 @@ export const carsData: Car[] = [
     price: 900000,
     images: [
       {
-        url: '/img/cars/bmw/BMW-2-Series-M.jpg',
+        url: '/RightBimmer/img/cars/bmw/BMW-2-Series-M.jpg',
         alt: 'BMW 2-Series 2018',
         isMain: true,
       },
@@ -53,7 +53,7 @@ export const carsData: Car[] = [
     price: 1050000,
     images: [
       {
-        url: '/img/cars/bmw/BMW-2-Series-Lux.jpg',
+        url: '/RightBimmer/img/cars/bmw/BMW-2-Series-Lux.jpg',
         alt: 'BMW 2-Series 2017',
         isMain: true,
       },
@@ -68,7 +68,7 @@ export const carsData: Car[] = [
     price: 1000000,
     images: [
       {
-        url: '/img/cars/mazda/Mazda-Axela.jpg',
+        url: '/RightBimmer/img/cars/mazda/Mazda-Axela.jpg',
         alt: 'Mazda Axela 2017',
         isMain: true,
       },
@@ -83,7 +83,7 @@ export const carsData: Car[] = [
     price: 1600000,
     images: [
       {
-        url: '/img/cars/toyota/Toyota-Raize.jpg',
+        url: '/RightBimmer/img/cars/toyota/Toyota-Raize.jpg',
         alt: 'Toyota Raize 2021',
         isMain: true,
       },
@@ -98,7 +98,7 @@ export const carsData: Car[] = [
     price: 1320000,
     images: [
       {
-        url: '/img/cars/bmw/BMW-2-Series-F44.jpg',
+        url: '/RightBimmer/img/cars/bmw/BMW-2-Series-F44.jpg',
         alt: 'BMW 2-Series 2020',
         isMain: true,
       },
@@ -113,7 +113,7 @@ export const carsData: Car[] = [
     price: 1650000,
     images: [
       {
-        url: '/img/cars/bmw/BMW-X1.jpg',
+        url: '/RightBimmer/img/cars/bmw/BMW-X1.jpg',
         alt: 'BMW X1 2018',
         isMain: true,
       },
@@ -128,7 +128,7 @@ export const carsData: Car[] = [
     price: 1650000,
     images: [
       {
-        url: '/img/cars/bmw/BMW-X2.jpg',
+        url: '/RightBimmer/img/cars/bmw/BMW-X2.jpg',
         alt: 'BMW X2 2018',
         isMain: true,
       },
@@ -143,7 +143,7 @@ export const carsData: Car[] = [
     price: 600000,
     images: [
       {
-        url: '/img/cars/nissan/nissan-dayz.jpg',
+        url: '/RightBimmer/img/cars/nissan/nissan-dayz.jpg',
         alt: 'Nissan Dayz 2021',
         isMain: true,
       },
@@ -158,7 +158,7 @@ export const carsData: Car[] = [
     price: 950000,
     images: [
       {
-        url: '/img/cars/bmw/BMW-1-Series-old.jpg',
+        url: '/RightBimmer/img/cars/bmw/BMW-1-Series-old.jpg',
         alt: 'BMW 1-Series 2016',
         isMain: true,
       },
@@ -173,7 +173,7 @@ export const carsData: Car[] = [
     price: 1600000,
     images: [
       {
-        url: '/img/cars/suzuki/suzuki-jimny.jpg',
+        url: '/RightBimmer/img/cars/suzuki/suzuki-jimny.jpg',
         alt: 'Suzuki Jimny 2021',
         isMain: true,
       },
@@ -188,7 +188,7 @@ export const carsData: Car[] = [
     price: 2000000,
     images: [
       {
-        url: '/img/cars/mitsubishi/mitsubishi-eclipse-cross.jpg',
+        url: '/RightBimmer/img/cars/mitsubishi/mitsubishi-eclipse-cross.jpg',
         alt: 'Mitsubishi Eclipse Cross 2023',
         isMain: true,
       },
@@ -203,7 +203,7 @@ export const carsData: Car[] = [
     price: 2150000,
     images: [
       {
-        url: '/img/cars/honda/honda-freed.jpg',
+        url: '/RightBimmer/img/cars/honda/honda-freed.jpg',
         alt: 'Honda Freed 2026',
         isMain: true,
       },
@@ -218,7 +218,7 @@ export const carsData: Car[] = [
     price: 1200000,
     images: [
       {
-        url: '/img/cars/honda/honda-fit.jpg',
+        url: '/RightBimmer/img/cars/honda/honda-fit.jpg',
         alt: 'Honda Fit 2022',
         isMain: true,
       },
@@ -233,7 +233,7 @@ export const carsData: Car[] = [
     price: 2150000,
     images: [
       {
-        url: '/img/cars/toyota/toyota-corolla-cross.jpg',
+        url: '/RightBimmer/img/cars/toyota/toyota-corolla-cross.jpg',
         alt: 'Toyota Corolla Cross 2022',
         isMain: true,
       },
@@ -248,7 +248,7 @@ export const carsData: Car[] = [
     price: 1050000,
     images: [
       {
-        url: '/img/cars/mazda/mazda-cx3.jpg',
+        url: '/RightBimmer/img/cars/mazda/mazda-cx3.jpg',
         alt: 'Mazda CX-3 2015',
         isMain: true,
       },

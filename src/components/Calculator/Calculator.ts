@@ -99,7 +99,7 @@ export class Calculator {
         const otherExpenses = 15000 + 4000 + 300 + 1500; // СВХ + временная регистрация + нотариус + сдэк
         const brokerFee = 55550; // Услуги брокера 
         const freight = 140; 
-        const rightbimmerFee = 30000;
+        // const rightbimmerFee = 30000;
         const delivery = 200000;
 
         // Итого в Японии 
@@ -107,7 +107,7 @@ export class Calculator {
         const totalInJapanRub = totalInJapanYen * yenRate;
 
         // Итого во Владивостоке 
-        const totalVladivostok = totalInJapanRub + customsDuty + brokerFee + rightbimmerFee + otherExpenses;
+        const totalVladivostok = totalInJapanRub + customsDuty + brokerFee + otherExpenses;
         // Итого в городе доставки 
         const totalDelivery = totalVladivostok + delivery;
         // Форматирование результатов
@@ -126,12 +126,12 @@ export class Calculator {
               <div><strong>Таможенная пошлина:</strong><br>${formatCurrency(customsDuty)}</div>
               <div><strong>Брокерские услуги:</strong><br>${formatCurrency(brokerFee)}</div>
               <div><strong>Прочие расходы:</strong><br>${formatCurrency(otherExpenses)}</div>
-              <div class="total-price">
-                <strong>Итого во Владивостоке:</strong><br>${formatCurrency(totalVladivostok)}
-              </div>
-              <div class="total-price">
-                <strong>Итого в городе доставки:</strong><br>${formatCurrency(totalDelivery)}
-              </div>
+            </div> 
+            <div class="total-price">
+              <strong>Цена в РФ:</strong>${formatCurrency(totalVladivostok)}
+            </div>
+            <div class="total-price">
+              <strong>Цена в вашем городе:</strong>${formatCurrency(totalDelivery)}
             </div>
           `;
           resultEl.classList.add('show');

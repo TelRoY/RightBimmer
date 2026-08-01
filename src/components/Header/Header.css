@@ -1,10 +1,18 @@
 .header {
-  background: var(--color-secondary);
-  padding: 20px 0;
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s var(--transition-smooth);
+}
+
+.header.scrolled {
+  background: rgba(10, 10, 15, 0.95);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
 }
 
 .header .container {
@@ -17,13 +25,22 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  text-decoration: none;
+  position: relative;
 }
 
 .logo img {
-  width: 50px;
-  height: 50px;
+  width: 74px;
+  height: 74px;
   border-radius: 50%;
+  box-shadow: var(--neon-primary);
+  transition: all 0.3s var(--transition-smooth);
+}
+
+.logo:hover img {
+  transform: scale(1.05) rotate(-5deg);
+  box-shadow: 0 0 50px rgba(255, 45, 85, 0.4);
 }
 
 .logo span {
@@ -31,6 +48,10 @@
   font-weight: 800;
   font-size: 22px;
   line-height: 1.2;
+  background: linear-gradient(135deg, #fff 60%, var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .nav ul {
@@ -40,23 +61,26 @@
 }
 
 .nav a {
-  color: var(--color-white);
+  color: var(--color-text-secondary);
   text-decoration: none;
   font-weight: 500;
-  font-size: 16px;
-  transition: color 0.3s ease;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   position: relative;
+  padding: 4px 0;
+  transition: color 0.3s var(--transition-smooth);
 }
 
 .nav a::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -2px;
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--color-primary);
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transition: width 0.3s var(--transition-smooth);
 }
 
 .nav a:hover::after,
@@ -65,11 +89,11 @@
 }
 
 .nav a:hover {
-  color: var(--color-primary);
+  color: var(--color-text);
 }
 
 .nav a.active {
-  color: var(--color-primary);
+  color: var(--color-text);
 }
 
 .header-phone {
@@ -82,7 +106,8 @@
   font-weight: 700;
   font-size: 18px;
   display: block;
-  transition: color 0.3s ease;
+  transition: color 0.3s var(--transition-smooth);
+  letter-spacing: 0.5px;
 }
 
 .header-phone a:hover {
@@ -91,8 +116,8 @@
 
 .phone-secondary {
   font-weight: 400 !important;
-  font-size: 14px !important;
-  opacity: 0.7;
+  font-size: 13x !important;
+  opacity: 0.5;
 }
 
 @media (max-width: 768px) {

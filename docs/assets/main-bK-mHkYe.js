@@ -37,11 +37,37 @@ Expecting `+S.join(`, `)+`, got '`+(this.terminals_[p]||p)+`'`:`Parse error on l
       <a href='tel:+78005353535' class='phone-secondary'>+7 (800) 535-35-35</a>\r
     </div>\r
   </div>\r
-</header>`})),be=o((()=>{})),N,P,xe=o((()=>{N=l(j()),ye(),be(),P=class{container;constructor(e){this.container=document.getElementById(e)}render(){let e=N.default.compile(M);this.container.innerHTML=e({}),this.initNavigation()}initNavigation(){let e=this.container.querySelectorAll(`.nav a`);e.forEach(t=>{t.addEventListener(`click`,()=>{e.forEach(e=>e.classList.remove(`active`)),t.classList.add(`active`)})})}}})),F,Se=o((()=>{F=`<section class='hero'>\r
-  <div class='container'>\r
+</header>`})),be=o((()=>{})),N,P,xe=o((()=>{N=l(j()),ye(),be(),P=class{container;constructor(e){this.container=document.getElementById(e)}render(){let e=N.default.compile(M);this.container.innerHTML=e({}),this.initNavigation()}initNavigation(){let e=this.container.querySelectorAll(`.nav a`);e.forEach(t=>{t.addEventListener(`click`,()=>{e.forEach(e=>e.classList.remove(`active`)),t.classList.add(`active`)})})}}})),F,Se=o((()=>{F=`<section class="hero">\r
+  <!-- Анимированные частицы -->\r
+  <div class="hero-particles">\r
+    <div class="particle"></div>\r
+    <div class="particle"></div>\r
+    <div class="particle"></div>\r
+    <div class="particle"></div>\r
+    <div class="particle"></div>\r
+    <div class="particle"></div>\r
+    <div class="particle"></div>\r
+    <div class="particle"></div>\r
+    <div class="particle"></div>\r
+    <div class="particle"></div>\r
+  </div>\r
+  <div class="hero-logo-bg">\r
+    <img src="/RightBimmer/img/icons/logo.png" alt="Right Bimmer" />\r
+  </div>\r
+\r
+  <!-- Неоновые ореолы -->\r
+  <div class="hero-glow"></div>\r
+  <div class="hero-glow-secondary"></div>\r
+\r
+  <div class="container">\r
+    <!-- Виджет курсов валют -->\r
     <div class="rates-widget">\r
       <div class="rates-header">\r
         <span class="rates-title">💱 Курсы валют</span>\r
+        <span class="rates-update">\r
+          <span class="rates-update-time">{{lastUpdate}}</span>\r
+        </span>\r
+        <button class="rates-refresh" title="Обновить курсы">⟳</button>\r
       </div>\r
       <div class="rates-grid">\r
         {{#each rates}}\r
@@ -52,19 +78,29 @@ Expecting `+S.join(`, `)+`, got '`+(this.terminals_[p]||p)+`'`:`Parse error on l
         </div>\r
         {{/each}}\r
       </div>\r
+      <div class="rates-note">* За 1 единицу валюты</div>\r
     </div>\r
 \r
-    <div class='hero-content'>\r
-      <h1>Автомобили из Японии <br />напрямую с аукционов</h1>\r
-      <p>Поможем купить, доставить и растаможить автомобиль <br />из Японии под ключ</p>\r
-      <div class='hero-buttons'>\r
-        <a href='#calculator' class='btn btn-primary'>Рассчитать стоимость</a>\r
-        <a href='#catalog' class='btn btn-secondary'>Смотреть каталог</a>\r
+    <!-- Основной контент -->\r
+    <div class="hero-content">\r
+      <div class="hero-badge">🚗 Привозим авто из Японии</div>\r
+      <h1>\r
+        Автомобили из Японии <br>\r
+        <span class="highlight">с аукционов</span>\r
+      </h1>\r
+      <p>\r
+        Поможем купить, доставить и растаможить автомобиль<br>\r
+        из Японии под ключ\r
+      </p>\r
+      <div class="hero-buttons">\r
+        <a href="#calculator" class="btn btn-primary">\r
+          <span>Рассчитать стоимость</span>\r
+        </a>\r
+        <a href="#catalog" class="btn btn-secondary">Смотреть каталог</a>\r
       </div>\r
     </div>\r
   </div>\r
-</section>\r
-`}));async function I(){try{let e=await(await fetch(`https://api.exchangerate-api.com/v4/latest/RUB`)).json();return[{currency:`JPY`,rate:Math.round(1/e.rates.JPY*100)/100,flag:`🇯🇵`},{currency:`EUR`,rate:Math.round(1/e.rates.EUR*100)/100,flag:`🇪🇺`}]}catch(e){return console.error(`Ошибка загрузки курсов валют:`,e),[{currency:`JPY`,rate:.515,flag:`🇯🇵`},{currency:`EUR`,rate:88.9,flag:`🇪🇺`}]}}var L=o((()=>{})),Ce=o((()=>{})),R,z,we=o((()=>{R=l(j()),Se(),L(),Ce(),z=class{container;rates=[];constructor(e){this.container=document.getElementById(e)}async render(){try{this.rates=await I();let e=R.default.compile(F);this.container.innerHTML=e({rates:this.rates,lastUpdate:new Date().toLocaleTimeString(`ru-RU`)})}catch(e){console.error(`Ошибка рендеринга`,e)}}}})),B,Te=o((()=>{B=`<section class='advantages section'>\r
+</section>`}));async function I(){try{let e=await(await fetch(`https://api.exchangerate-api.com/v4/latest/RUB`)).json();return[{currency:`JPY`,rate:Math.round(1/e.rates.JPY*100)/100,flag:`🇯🇵`},{currency:`EUR`,rate:Math.round(1/e.rates.EUR*100)/100,flag:`🇪🇺`}]}catch(e){return console.error(`Ошибка загрузки курсов валют:`,e),[{currency:`JPY`,rate:.515,flag:`🇯🇵`},{currency:`EUR`,rate:88.9,flag:`🇪🇺`}]}}var L=o((()=>{})),Ce=o((()=>{})),R,z,we=o((()=>{R=l(j()),Se(),L(),Ce(),z=class{container;rates=[];constructor(e){this.container=document.getElementById(e)}async render(){try{this.rates=await I();let e=R.default.compile(F);this.container.innerHTML=e({rates:this.rates,lastUpdate:new Date().toLocaleTimeString(`ru-RU`)})}catch(e){console.error(`Ошибка рендеринга`,e)}}}})),B,Te=o((()=>{B=`<section class='advantages section'>\r
   <div class='container'>\r
     <h2 class='section-title'>Почему выбирают нас</h2>\r
     <div class='advantages-grid'>\r
@@ -151,12 +187,26 @@ Expecting `+S.join(`, `)+`, got '`+(this.terminals_[p]||p)+`'`:`Parse error on l
       `,n.appendChild(e);let t=e.querySelector(`.show-popular-btn`);t&&t.addEventListener(`click`,e=>{e.preventDefault(),this.render()})}this.initHandlers()}}}})),Y,Pe=o((()=>{Y=`<section class='calculator section' id='calculator'>\r
   <div class='container'>\r
     <h2 class='section-title'>Калькулятор стоимости</h2>\r
-    <p class='calculator-subtitle'>Рассчитайте полную стоимость автомобиля с доставкой и растаможкой</p>\r
+    <p class='calculator-subtitle'>Рассчитайте полную стоимость автомобиля с доставкой и таможней</p>\r
     <form class='calc-form'>\r
       <div class='form-row'>\r
         <div class='form-group'>\r
           <label for='price'>Цена авто, тыс.йен</label>\r
           <input type='number' id='car-price-yen' placeholder='Например, 3000' />\r
+        </div>\r
+        <div class='form-group'>\r
+          <label for='engine'>Объем двигателя</label>\r
+          <select id='engine'>\r
+            <option value=''>Выберите объем</option>\r
+            <option value='660'>0.660 л</option>\r
+            <option value='1000'>1.0 л</option>\r
+            <option value='1200'>1.2 л</option>\r
+            <option value='1300'>1.3 л</option>\r
+            <option value='1400'>1.4 л</option>\r
+            <option value='1500'>1.5 л</option>\r
+            <option value='1600'>1.6 л</option>\r
+            <option value='1800'>1.8 л</option>\r
+          </select>\r
         </div>\r
         <div class='form-group'>\r
           <label for='year'>Год выпуска</label>\r
@@ -181,14 +231,6 @@ Expecting `+S.join(`, `)+`, got '`+(this.terminals_[p]||p)+`'`:`Parse error on l
             <option value='2010'>2010</option>\r
             <option value='2009'>2009</option>\r
             <option value='2008'>2008</option>\r
-            <option value='2007'>2007</option>\r
-            <option value='2006'>2006</option>\r
-            <option value='2005'>2005</option>\r
-            <option value='2004'>2004</option>\r
-            <option value='2003'>2003</option>\r
-            <option value='2002'>2002</option>\r
-            <option value='2001'>2001</option>\r
-            <option value='2000'>2000</option>\r
           </select>\r
         </div>\r
         <div class='form-group'>\r
@@ -212,20 +254,6 @@ Expecting `+S.join(`, `)+`, got '`+(this.terminals_[p]||p)+`'`:`Parse error on l
       </div>\r
       <div class='form-row'>\r
         <div class='form-group'>\r
-          <label for='engine'>Объем двигателя</label>\r
-          <select id='engine'>\r
-            <option value=''>Выберите объем</option>\r
-            <option value='660'>0.660 л</option>\r
-            <option value='1000'>1.0 л</option>\r
-            <option value='1200'>1.2 л</option>\r
-            <option value='1300'>1.3 л</option>\r
-            <option value='1400'>1.4 л</option>\r
-            <option value='1500'>1.5 л</option>\r
-            <option value='1600'>1.6 л</option>\r
-            <option value='1800'>1.8 л</option>\r
-          </select>\r
-        </div>\r
-        <div class='form-group'>\r
           <label for='city'>Город доставки</label>\r
           <select id='city'>\r
             <option value=''>Выберите город</option>\r
@@ -240,7 +268,7 @@ Expecting `+S.join(`, `)+`, got '`+(this.terminals_[p]||p)+`'`:`Parse error on l
     </form>\r
     <div id='calc-result' class='calc-result'></div>\r
   </div>\r
-</section>`})),Fe=o((()=>{})),X,Z,Ie=o((()=>{X=l(j()),Pe(),L(),Fe(),Z=class{container;constructor(e){this.container=document.getElementById(e)}render(){let e=X.default.compile(Y);this.container.innerHTML=e({}),this.initCalculator()}async initCalculator(){let e=this.container.querySelector(`.calc-form`),t=this.container.querySelector(`.calc-result`),n=await I(),r=n.find(e=>e.currency===`EUR`)?.rate||88.9,i=n.find(e=>e.currency===`JPY`)?.rate||.515,a=i+.1;e&&e.addEventListener(`submit`,e=>{e.preventDefault();let n=parseFloat(this.container.querySelector(`#car-price-yen`)?.value)||0,o=parseInt(this.container.querySelector(`#release-year`)?.value,10)||0,s=parseInt(this.container.querySelector(`#release-month`)?.value,10)||0,c=parseInt(this.container.querySelector(`#engine`)?.value,10)||0;if(!n||!c){alert(`Пожалуйста, заполните все поля!`);return}let l=o*12+s,u=24320,d=u-58>l?2015:u-35<l?2023:2020,f=d<2021?5200:3400,p=n<1980?n<700?n<300?775:2134:3100:8530,m=0;m=d<2021?d<2019?c<1100?3:c<1600?3.2:c<1900?3.5:c<2300?4:5:c<1100?1.5:c<1600?1.7:c<1900?2.5:c<2300?2.7:3:(n+140)*(n<1300?.54:.48)*i*1e3<c*(n<1300?2.5:3.5)*r?n<1300?2.5:3.5:n<1300?.54:.48;let h=0;if(d<2021)h=c*m*r+f+(n<1980?n<700?n<300?775:1500:3100:8500);else{let e=(n+140)*(n<1300?.54:.48)*a*1e3,t=c*(n<1300?2.5:3.5)*r;h=e<t?t+p+f:e+p+f}let g=20800,_=55550,v=(n+140)*1e3*i,y=v+h+_+3e4+g,b=y+2e5,x=e=>e.toLocaleString(`ru-RU`)+`₽`;t&&(t.innerHTML=`
+</section>`})),Fe=o((()=>{})),X,Z,Ie=o((()=>{X=l(j()),Pe(),L(),Fe(),Z=class{container;constructor(e){this.container=document.getElementById(e)}render(){let e=X.default.compile(Y);this.container.innerHTML=e({}),this.initCalculator()}async initCalculator(){let e=this.container.querySelector(`.calc-form`),t=this.container.querySelector(`.calc-result`),n=await I(),r=n.find(e=>e.currency===`EUR`)?.rate||88.9,i=n.find(e=>e.currency===`JPY`)?.rate||.515,a=i+.1;e&&e.addEventListener(`submit`,e=>{e.preventDefault();let n=parseFloat(this.container.querySelector(`#car-price-yen`)?.value)||0,o=parseInt(this.container.querySelector(`#release-year`)?.value,10)||0,s=parseInt(this.container.querySelector(`#release-month`)?.value,10)||0,c=parseInt(this.container.querySelector(`#engine`)?.value,10)||0;if(!n||!c){alert(`Пожалуйста, заполните все поля!`);return}let l=o*12+s,u=24320,d=u-58>l?2015:u-35<l?2023:2020,f=d<2021?5200:3400,p=n<1980?n<700?n<300?775:2134:3100:8530,m=0;m=d<2021?d<2019?c<1100?3:c<1600?3.2:c<1900?3.5:c<2300?4:5:c<1100?1.5:c<1600?1.7:c<1900?2.5:c<2300?2.7:3:(n+140)*(n<1300?.54:.48)*i*1e3<c*(n<1300?2.5:3.5)*r?n<1300?2.5:3.5:n<1300?.54:.48;let h=0;if(d<2021)h=c*m*r+f+(n<1980?n<700?n<300?775:1500:3100:8500);else{let e=(n+140)*(n<1300?.54:.48)*a*1e3,t=c*(n<1300?2.5:3.5)*r;h=e<t?t+p+f:e+p+f}let g=20800,_=55550,v=(n+140)*1e3*i,y=v+h+_+g,b=y+2e5,x=e=>e.toLocaleString(`ru-RU`)+`₽`;t&&(t.innerHTML=`
             <div class="calc-result-grid">
               <div><strong>Цена авто в йенах:</strong><br>${(e=>e.toLocaleString(`ja-JP`)+`¥`)(n*1e3)}</div>
               <div><strong>Объём мотора:</strong><br>${c} см³</div>
@@ -250,12 +278,12 @@ Expecting `+S.join(`, `)+`, got '`+(this.terminals_[p]||p)+`'`:`Parse error on l
               <div><strong>Таможенная пошлина:</strong><br>${x(h)}</div>
               <div><strong>Брокерские услуги:</strong><br>${x(_)}</div>
               <div><strong>Прочие расходы:</strong><br>${x(g)}</div>
-              <div class="total-price">
-                <strong>Итого во Владивостоке:</strong><br>${x(y)}
-              </div>
-              <div class="total-price">
-                <strong>Итого в городе доставки:</strong><br>${x(b)}
-              </div>
+            </div> 
+            <div class="total-price">
+              <strong>Цена в РФ:</strong>${x(y)}
+            </div>
+            <div class="total-price">
+              <strong>Цена в вашем городе:</strong>${x(b)}
             </div>
           `,t.classList.add(`show`))})}}})),Le,Re=o((()=>{Le=`<section class='steps-section section'>\r
   <div class='container'>\r

@@ -29,7 +29,7 @@ export class CTA {
         }
 
         alert(`Спасибо, ${name}! Мы свяжемся с вами в ближайшее время.`);
-        form.reset();
+        // form.reset();
       });
     }
   }
